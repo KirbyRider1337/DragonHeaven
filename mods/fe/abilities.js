@@ -8358,5 +8358,23 @@ exports.BattleAbilities = {
 		id: "temporaryguard",
 		name: "Temporary Guard",
 	},
-	
+		"synchroveil": {
+		desc: "If it gets afflicted with a status ailment, the Pokemon instantly cures itself. If another Pokémon inflicted the status, the Pokémon attempts to inflict that status on the other Pokémon.",
+		shortDesc: "If another Pokemon burns/poisons/paralyzes this Pokemon, the status is transferred onto that Pokemon.",
+		onAfterSetStatus: function (status, target, source, effect) {
+			if (!source || source === target) return;
+			this.add('-activate', target, 'ability: Synchro Veil');
+			if (effect && effect.id === 'toxicspikes'){ 
+                        source.cureStatus();
+                        return;}
+			if (status.id === 'slp' || status.id === 'frz'){ 
+                          source.cureStatus();
+                          return;}
+			// @ts-ignore
+			source.trySetStatus(status, target, {status: status.id, id: 'synchroveil'});
+                        source.cureStatus();
+		},
+		id: "synchroveil",
+		name: "Synchro Veil",
+	},
 };
