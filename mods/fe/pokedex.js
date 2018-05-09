@@ -2630,9 +2630,9 @@ swampert: {
         color: "Pink",
         eggGroups: ["Human-Like"],
     },
-    aegilineshield: {
+    aegiline: {
         num: 750063,
-        species: "Aegiline-Shield",
+        species: "Aegiline",
         types: ["Steel", "Bug"],
         genderRatio: {
             M: 0.0,
@@ -2644,6 +2644,34 @@ swampert: {
             def: 132,
             spa: 85,
             spd: 132,
+            spe: 99
+        },
+        abilities: {
+            0: "Error Macro"
+        },
+        heightm: 1.6,
+        weightkg: 67.75,
+        color: "Black",
+		  otherFormes: ["aegileneblade"],
+        eggGroups: ["Undiscovered"],
+    },
+	    aegilineblade: {
+        num: 750063,
+        species: "Aegiline-Blade",
+		  baseSpecies: "Aegiline",
+        forme: "Blade",
+        formeLetter: "B",
+        types: ["Steel", "Bug"],
+        genderRatio: {
+            M: 0.0,
+            F: 0.0
+        },
+        baseStats: {
+            hp: 65,
+            atk: 132,
+            def: 85,
+            spa: 132,
+            spd: 85,
             spe: 99
         },
         abilities: {
@@ -9621,22 +9649,29 @@ darkchomp: {
         },
     },
 
-    ninetalesprime: {
-        num: 7500286,
-        species: "Ninetales-Prime",
-        types: ["Ice", "Fire"],
-        baseStats: {
+ninetalesprime: { num: 39
+			species: "Ninetales-Prime",
+			baseSpecies: "Ninetales",
+			forme: "Ninetales-Prime",
+			formeLetter: "P",
+			types: ["Ice", "Fire"],
+			genderRatio: {M: 25.0, F: 75.0}
+			baseStats: {
             hp: 83,
             atk: 81,
             def: 85,
             spa: 91,
             spd: 110,
             spe: 114
-        },
-        abilities: {
-            0: "Solar Snow"
-        },
-    },
+			},
+			abilities: {
+    			        0: "Solar Snow"
+			        },
+			heightm: 1.1,
+			weightkg: 19.9,
+			color: "Yellow",
+			eggGroups: ["Field"], },
+
 
     blampa: {
         num: 7500287,
@@ -14635,8 +14670,11 @@ auroritarmega: {
 		},
 	},
 	sandslashprime: {
-		num: 7500461,
+		num: 28
 		species: "Sandslash-Prime",
+		baseSpecies: "Sandslash",
+		forme: "Sandslash-Prime",
+		formeLetter: "P",
 		types: ["Ground", "Ice"],
 		baseStats: {
 			hp: 85,
@@ -15085,20 +15123,19 @@ auroritarmega: {
 		},
 	},
 	persianprime: {
-		num: 7500482,
-		species: "Persian-Prime",
-		types: ["Normal", "Dark"],
-		baseStats: {
-			hp: 75,
-			atk: 75,
-			def: 70,
-			spa: 80,
-			spd: 75,
-			spe: 125,
-		},
-		abilities: {
-			0: "Tech Fur"
-		},
+			num: 53
+			species: "Persian-Prime",
+			baseSpecies: "Persian",
+			forme: "Persian-Prime",
+			formeLetter: "P",
+			types: ["Normal", "Dark"],
+			genderRatio: {M: 50.0, F: 50.0}
+			baseStats: {hp: 75, atk: 75, def: 70, spa: 80, spd: 75, spe: 125},
+			abilities: {0: "Tech Fur"}, }
+			heightm: 1.0,
+			weightkg: 32.5,
+			color: "Yellow",
+			eggGroups: ["Field"],
 	},
 	octapex: {
 		num: 7500483,
