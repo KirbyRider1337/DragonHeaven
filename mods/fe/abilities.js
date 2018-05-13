@@ -7042,7 +7042,7 @@ exports.BattleAbilities = {
 	"contrabubble": {
 		shortDesc: "Reverses the effectiveness of Fire and Water attacks on all active Pokemon, and the effects of burn on this Pokemon.",
 		onEffectiveness: function (typeMod, target, type, move) {
-			if (move.type === 'Water' || move.type === 'Fire') return -typeMod;
+			if (move.type === 'Water' || move.type === 'Fire') return -1*typeMod;
 		},
                 //TODO: Check to see if this is actually implemented properly.
 		onModifyAtkPriority: 5,
@@ -8570,29 +8570,29 @@ exports.BattleAbilities = {
 		name: "Beautiful Obliteration Weapon",
 	},
 		"advocatescale": {
-		shortDesc: "Weaknesses become resistances, and resistances become weaknesses.",
-                //WARNING: DOUBT AHEAD.
-		onEffectiveness: function (typeMod, type, move) {
-			if (move && this.getImmunity(move, type)) return 1;
-			return -typeMod;
+		    shortDesc: "Weaknesses become resistances, and resistances become weaknesses.",
+		    //WARNING: DOUBT AHEAD.
+		    onEffectiveness: function(typeMod, type, move) {
+		        if (move && this.getImmunity(move, type)) return 1;
+		        return -1 * typeMod;
+		    },
+		    id: "advocatescale",
+		    name: "Advocate Scale",
 		},
-		id: "advocatescale",
-		name: "Advocate Scale",
-	},
 
-	"inversearmor": {
-                desc: "Type effectiveness of moves that the holder uses or is hit by is inverted (Inverse Battle rules apply; type effectiveness of moves used by Mold Breaker variants users is not influenced by this ability).",
-		shortDesc: "Type effectiveness in moves that target or are used by this Pokemon is inverted.",
-                //WARNING: AGAIN, MASSIVE DOUBT AHEAD.
-		onAnyEffectiveness: function (typeMod, type,  target, source, move) {
-                       if (move && (source === this.effectData.target || target === this.effectData.target)) {
-			  if (move && this.getImmunity(move, type)) return 1;
-			  return -typeMod;
-                       }
+		"inversearmor": {
+		    desc: "Type effectiveness of moves that the holder uses or is hit by is inverted (Inverse Battle rules apply; type effectiveness of moves used by Mold Breaker variants users is not influenced by this ability).",
+		    shortDesc: "Type effectiveness in moves that target or are used by this Pokemon is inverted.",
+		    //WARNING: AGAIN, MASSIVE DOUBT AHEAD.
+		    onAnyEffectiveness: function(typeMod, type, target, source, move) {
+		        if (move && (source === this.effectData.target || target === this.effectData.target)) {
+		            if (move && this.getImmunity(move, type)) return 1;
+		            return -1 * typeMod;
+		        }
+		    },
+		    id: "inversearmor",
+		    name: "Inverse Armor",
 		},
-		id: "inversearmor",
-		name: "Inverse Armor",
-	},
 	"mentalfear": {
 		shortDesc: "Always appear as full health to the opponent.",
 		onBeforeSwitchIn: function (pokemon) {
