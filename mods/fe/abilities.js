@@ -8705,4 +8705,21 @@ exports.BattleAbilities = {
 		name: "Sensu Dancer",
 		// implemented in runMove in scripts.js
 	},
+	
+"radioactivesurge": {
+		desc: "This Pokemon summons Radioactive Terrain upon switching in. Radioactive Terrain multiplies the power of Electric and Poison-type moves 1.5x and poisons anything that can be poisoned. When this terrain fades, this ability functions just like Poison Point.",
+		shortDesc: "On switch-in, this Pokemon summons Radioactive Terrain, which powers up Electric- and Poison-type moves and burns anything that can be burned. Contact can inflict poisoning.",
+		onStart: function (source) {
+			this.setTerrain('radioactiveterrain');
+		},
+		onAfterDamage: function (damage, target, source, move) {
+			if (move && move.flags['contact'] && !this.isTerrain('radioactiveterrain')) {
+				if (this.randomChance(3, 10)) {
+					source.trySetStatus('psn', target);
+				}s
+			}
+		},
+		id: "radioactivesurge",
+		name: "Radioactive Surge",
+	},
 };
