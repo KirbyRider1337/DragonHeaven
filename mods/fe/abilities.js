@@ -830,7 +830,7 @@ exports.BattleAbilities = {
 		onImmunity: function(type, pokemon) {
 			if (type === 'sandstorm') return false;
 		},
-		onModifyAccuracy: function(accuracy) {
+		onModifyAccuracy: function(accuracy, target) {
 			if (typeof accuracy !== 'number') return;
 			if (this.isWeather('sandstorm')) {
 				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
