@@ -1392,12 +1392,12 @@ exports.BattleAbilities = {
 		},
 		onModifySpe: function(spe, pokemon) {
 			if (pokemon.status === 'par') {
-				return this.chainModify(1.5);
+				return this.chainModify(2);
 			}
 		},
 		onModifyAtk: function(atk, pokemon) {
 			if (pokemon.status === 'brn') {
-				return this.chainModify(1.5);
+				return this.chainModify(2);
 			}
 		},
 		id: "hardbody",
@@ -1411,8 +1411,8 @@ exports.BattleAbilities = {
 		stopAttackEvents: true,
 		onModifyAtkPriority: 5,
 		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status) {
-				return this.chainModify(1.5);
+			if (pokemon.status === 'brn') {
+				return this.chainModify(3);
 			}
 		},
 		id: "gutbreaker",
