@@ -8070,4 +8070,45 @@ exports.BattleMovedex = {
 		zMovePower: 180,
 		contestType: "Tough",
 	},
+	
+	"confound": {
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "For the next three turns, if the target uses a move, it will be picked at random.",
+		shortDesc: "Causes the target's next three moves to be randomly chosen.",
+		id: "confound",
+		name: "Confound",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		volatileStatus: 'confound',
+		effect: {
+			duration: 3,
+			noCopy: true,
+			onStart: function (pokemon) {
+				this.add('-start', pokemon, 'Confound');
+			},
+			onBeforeMovePriority: 8,
+			onBeforeMove: function (pokemon, target, move) {
+				let warnMoves = [];
+				for (const moveSlot of pokemon.moveSlots) {
+					let move = this.getMove(moveSlot.move);
+					warnMoves.push(move);
+				}
+				let calledMove = this.sample(warnMoves);
+				let newMove = this.getMoveCopy(calledMove.id);
+				this.useMove(newMove, target, pokemon);
+				return false;
+			},
+			onEnd: function (pokemon) {
+				this.add('-end', pokemon, 'Confound');
+			},
+		},
+		secondary: false,
+		target: "normal",
+		type: "Normal",
+		zMoveBoost: {spe: 1},
+		contestType: "Cute",
+	},
 };
