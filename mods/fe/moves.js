@@ -8201,4 +8201,30 @@ exports.BattleMovedex = {
 		zMovePower: 190,
 		contestType: "Cool",
 	},
+	"titaniumcannon": {
+		accuracy: 100,
+		basePower: 70,
+		category: "Special",
+		desc: "Has a 10% chance to lower the target's Special Defense by 1 stage. This move's type effectiveness against Steel is changed to be super effective no matter what this move's type is.",
+		shortDesc: "Deals super-effective damage against Steel-types. Has a 10% chance to lower the target's Special Defense by 1 stage.",
+		id: "titaniumcannon",
+		isViable: true,
+		name: "Titanium Cannon",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Steel') return 1;
+		},
+		secondary: {
+			chance: 10,
+			boosts: {
+				spd: -1,
+			},
+		},
+		target: "normal",
+		type: "Steel",
+		zMovePower: 140,
+		contestType: "Beautiful",
+	},
 };
