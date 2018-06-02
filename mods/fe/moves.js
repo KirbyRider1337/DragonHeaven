@@ -8172,4 +8172,33 @@ exports.BattleMovedex = {
 		zMovePower: 175,
 		contestType: "Cool",
 	},
+	"berserkrush": {
+		accuracy: 100,
+		basePower: 120,
+		category: "Physical",
+		desc: "20% chance to flinch on each hit. Deals damage to one adjacent foe at random. The user spends two or three turns locked into this move and becomes confused after the last turn of the effect if it is not already. If the user is prevented from moving or the attack is not successful against the target on the first turn of the effect or the second turn of a three-turn effect, the effect ends without causing confusion. If this move is called by Sleep Talk, the move is used for one turn and does not confuse the user.",
+		shortDesc: "Lasts 2-3 turns. Confuses the user afterwards.",
+		id: "berserkrush",
+		isViable: true,
+		name: "Berserk Rush",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		self: {
+			volatileStatus: 'lockedmove',
+		},
+		onAfterMove: function (pokemon) {
+			if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
+				pokemon.removeVolatile('lockedmove');
+			}
+		},
+		secondary: {
+			chance: 20,
+			volatileStatus: 'flinch',
+		},
+		target: "randomNormal",
+		type: "Dark",
+		zMovePower: 190,
+		contestType: "Cool",
+	},
 };
