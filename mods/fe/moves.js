@@ -8111,4 +8111,44 @@ exports.BattleMovedex = {
 		zMoveBoost: {spe: 1},
 		contestType: "Cute",
 	},
+	"abilitybuster": {
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		desc: "+3 Priority. 100% flinch. Changes target's Ability to Simple if it hits. Only works on first turn out.",
+		shortDesc: "Hits first. First turn out only. 100% flinch chance. Target's ability becomes Simple.",
+		id: "abilitybuster",
+		isViable: true,
+		name: "Ability Buster",
+		pp: 10,
+		priority: 3,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onTry: function (pokemon, target) {
+			if (pokemon.activeTurns > 1) {
+				this.attrLastMove('[still]');
+				this.add('-fail', pokemon);
+				this.add('-hint', "Ability Buster only works on your first turn out.");
+				return null;
+			}
+		},
+		secondary: {
+			chance: 100,
+			volatileStatus: 'flinch',
+			onHit: function (pokemon) {
+				let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'simple', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'];
+				if (bannedAbilities.includes(pokemon.ability)) {
+					return;
+				}
+				let oldAbility = pokemon.setAbility('simple');
+				if (oldAbility) {
+					this.add('-ability', pokemon, 'Simple', '[from] move: Ability Buster');
+				}
+				return;
+			},
+		},
+		target: "normal",
+		type: "Normal",
+		zMovePower: 100,
+		contestType: "Cute",
+	},
 };
