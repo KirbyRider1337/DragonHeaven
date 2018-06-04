@@ -20815,7 +20815,7 @@ auroritarmega: {
 					},
 					landoroarroyal: { 
 				     num: 7500581,
-				     species: "Landoroar-Royal",
+				     species: "Landoroar",
 				     types: ["Ground", "Dark"],
    				  gender: "M",
 				     baseStats: {hp: 97, atk: 150, def: 95, spa: 97, spd: 95, spe: 100},
